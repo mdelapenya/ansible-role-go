@@ -1,0 +1,4 @@
+---
+gvm_platform: windows
+gvm_arch: amd64
+gvm_download_url: https://github.com/andrewkroh/gvm/releases/download/v{{ gvm_version }}/gvm-{{ gvm_platform }}-{{ gvm_arch }}.exe

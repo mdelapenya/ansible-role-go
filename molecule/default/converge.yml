@@ -12,7 +12,7 @@
       yum:
         name: tar
         state: present
-      when: ansible_distribution == Amazon
+      when: ansible_distribution == 'Amazon'
       changed_when: false
 
   roles:

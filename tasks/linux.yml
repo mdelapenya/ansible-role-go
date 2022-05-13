@@ -1,12 +1,12 @@
 ---
 - name: Check if Go is already installed.
-  command: go version
+  command: 'go version'
   ignore_errors: true
   register: go_version_result
   changed_when: false
 
 - name: Check if gvm is already installed.
-  command: ~/bin/gvm version
+  command: '/usr/local/bin/gvm version'
   ignore_errors: true
   register: gvm_version_result
   changed_when: false
@@ -14,7 +14,7 @@
 - name: Download gvm.
   get_url:
     url: "{{ gvm_download_url }}"
-    dest: ~/bin/gvm
+    dest: '/usr/local/bin/gvm'
     mode: '0755'
   when:
     - go_version_result is failed

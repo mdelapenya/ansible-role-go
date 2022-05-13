@@ -1,0 +1,12 @@
+---
+- name: Install Go for Linux
+  import_tasks: linux.yml
+  when: ansible_facts['os_family']|lower in ['redhat', 'debian', 'suse']
+
+- name: Install Go for Darwin
+  import_tasks: darwin.yml
+  when: ansible_facts['os_family']|lower == 'darwin'
+
+- name: Install Go for Windows
+  import_tasks: windows.yml
+  when: ansible_facts['os_family']|lower == 'windows'

@@ -9,7 +9,6 @@
   get_url:
     url: "{{ go_download_url }}"
     dest: /usr/local/src/{{ go_tarball }}
-    checksum: "sha256:{{ go_checksum }}"
   when: go_version_result is failed
 
 - name: Extract Go.

@@ -1,0 +1,4 @@
+---
+go_platform: windows
+go_arch: amd64
+go_ext: msi

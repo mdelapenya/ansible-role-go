@@ -10,5 +10,5 @@
     path: "{{ go_download_url }}"
     state: present
     arguments:
-    - /qn
+      - /qn
   when: go_version_result is failed

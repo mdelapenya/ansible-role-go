@@ -16,7 +16,7 @@
   unarchive:
     src: /usr/local/src/{{ go_tarball }}
     dest: /usr/local
-    copy: no
+    copy: false
   when: go_version_result is failed
 
 - name: Add Go to to system-wide $PATH.

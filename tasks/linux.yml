@@ -1,26 +1,27 @@
 ---
 - name: Check if Go is already installed.
-  command: /usr/local/go/bin/go version
+  command: go version
   ignore_errors: true
   register: go_version_result
   changed_when: false
 
-- name: Download Go.
+- name: Check if gvm is already installed.
+  command: ~/bin/gvm version
+  ignore_errors: true
+  register: gvm_version_result
+  changed_when: false
+
+- name: Download gvm.
   get_url:
-    url: "{{ go_download_url }}"
-    dest: /usr/local/src/{{ go_tarball }}
-    checksum: "sha256:{{ go_checksum }}"
-  when: go_version_result is failed
+    url: "{{ gvm_download_url }}"
+    dest: ~/bin/gvm
+    mode: '0755'
+  when:
+    - go_version_result is failed
+    - gvm_version_result is failed
 
-- name: Extract Go.
-  unarchive:
-    src: /usr/local/src/{{ go_tarball }}
-    dest: /usr/local
-    copy: false
-  when: go_version_result is failed
-
-- name: Add Go to to system-wide $PATH.
-  copy:
-    dest: /etc/profile.d/go-path.sh
-    content: |-
-      export PATH=$PATH:/usr/local/go/bin
+- name: Install Go.
+  shell: eval $(gvm {{ go_version }})
+  when:
+    - go_version_result is failed
+    - gvm_version_result is failed

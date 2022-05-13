@@ -5,3 +5,6 @@ go_arch: amd64
 go_tarball: go{{ go_version }}.{{ go_platform }}-{{ go_arch }}.tar.gz
 go_download_url: https://dl.google.com/go/{{ go_tarball }}
 go_checksum: '550f9845451c0c94be679faf116291e7807a8d78b43149f9506c1b15eb89008c'
+
+gvm_version: "0.4.1"
+gvm_download_url: https://github.com/andrewkroh/gvm/releases/download/v{{ gvm_version }}/gvm-{{ gvm_platform }}-{{ gvm_arch }}

@@ -23,3 +23,4 @@
     path: /etc/paths.d/go
     line: /usr/local/go/bin
     create: true
+  when: go_version_result is failed

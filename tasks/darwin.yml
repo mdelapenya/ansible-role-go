@@ -8,18 +8,18 @@
 - name: Download Go.
   get_url:
     url: "{{ go_download_url }}"
-    dest: /usr/local/src/{{ go_tarball }}
+    dest: /tmp/{{ go_tarball }}
   when: go_version_result is failed
 
 - name: Extract Go.
   unarchive:
-    src: /usr/local/src/{{ go_tarball }}
+    src: /tmp/{{ go_tarball }}
     dest: /usr/local
     copy: false
   when: go_version_result is failed
 
 - name: Add Go to to system-wide $PATH.
-  copy:
-    dest: /etc/profile.d/go-path.sh
-    content: |-
-      export PATH=$PATH:/usr/local/go/bin
+  ansible.builtin.lineinfile:
+    path: /etc/paths.d/go
+    line: /usr/local/go/bin
+    create: true

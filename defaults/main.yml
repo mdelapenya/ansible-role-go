@@ -2,5 +2,6 @@
 go_version: "1.17"
 go_platform: linux
 go_arch: amd64
-go_tarball: go{{ go_version }}.{{ go_platform }}-{{ go_arch }}.tar.gz
+go_ext: tar.gz
+go_tarball: go{{ go_version }}.{{ go_platform }}-{{ go_arch }}.{{ go_ext }}
 go_download_url: https://dl.google.com/go/{{ go_tarball }}

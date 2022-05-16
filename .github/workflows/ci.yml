@@ -24,7 +24,7 @@ jobs:
           path: 'mdelapenya.go'
 
       - name: Set up Python 3.
-        uses: actions/setup-python@v2
+        uses: actions/setup-python@v3
         with:
           python-version: '3.x'
 
@@ -57,7 +57,7 @@ jobs:
           path: 'mdelapenya.go'
 
       - name: Set up Python 3.
-        uses: actions/setup-python@v2
+        uses: actions/setup-python@v3
         with:
           python-version: '3.x'
 
@@ -65,8 +65,37 @@ jobs:
         run: pip3 install ansible molecule[docker] docker
 
       - name: Run Molecule tests.
-        run: molecule test
+        run: molecule test -s default
         env:
           PY_COLORS: '1'
           ANSIBLE_FORCE_COLOR: '1'
           MOLECULE_DISTRO: ${{ matrix.distro }}
+
+  molecule-local:
+    name: Molecule Localhost
+    strategy:
+      matrix:
+        distro:
+          - macos-latest
+    runs-on: ${{ matrix.distro }}
+
+    steps:
+      - name: Check out the codebase.
+        uses: actions/checkout@v2
+        with:
+          path: 'mdelapenya.go'
+
+      - name: Set up Python 3.
+        uses: actions/setup-python@v3
+        with:
+          python-version: '3.x'
+
+      - name: Install test dependencies on MacOS
+        run: pip3 install ansible molecule
+        if: ${{ matrix.distro  == 'macos-latest' }}
+
+      - name: Run Molecule tests.
+        run: molecule test -s localhost
+        env:
+          PY_COLORS: '1'
+          ANSIBLE_FORCE_COLOR: '1'

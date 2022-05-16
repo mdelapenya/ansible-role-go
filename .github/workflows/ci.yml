@@ -73,7 +73,7 @@ jobs:
 
   molecule-local:
     name: Molecule Localhost
-    runs-on: windows-latest
+    runs-on: macos-latest
 
     steps:
       - name: Check out the codebase.

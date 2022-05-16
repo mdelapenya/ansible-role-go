@@ -22,4 +22,4 @@
   ansible.builtin.lineinfile:
     path: /etc/paths.d/go
     line: /usr/local/go/bin
-    create: yes
+    create: true

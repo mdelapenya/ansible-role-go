@@ -1,6 +1,6 @@
 ---
 - name: Check if Go is already installed.
-  command: go version
+  ansible.windows.win_shell: go version
   ignore_errors: true
   register: go_version_result
   changed_when: false

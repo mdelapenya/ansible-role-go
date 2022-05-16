@@ -91,10 +91,14 @@ jobs:
         with:
           python-version: '3.x'
 
-      - name: Install test dependencies.
-        run: |
-          pip3 install –-upgrade wheel
-          pip3 install ansible molecule
+      # see https://github.com/ansible/ansible/issues/43759
+      - name:  Install test dependencies for Windows
+        run: pip3 install -Iv ansible===2.5.6 molecule
+        if: contains(${{ matrix.distro }}, 'windows')
+
+      - name: Install test dependencies on MacOS
+        run: pip3 install -Iv ansible molecule
+        if: ${{ matrix.distro }} == 'macos-latest'
 
       - name: Run Molecule tests.
         run: molecule test -s localhost

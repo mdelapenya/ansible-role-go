@@ -73,7 +73,11 @@ jobs:
 
   molecule-local:
     name: Molecule Localhost
-    runs-on: macos-latest
+    strategy:
+      matrix:
+        distro:
+          - macos-latest
+    runs-on: ${{ matrix.distro }}
 
     steps:
       - name: Check out the codebase.

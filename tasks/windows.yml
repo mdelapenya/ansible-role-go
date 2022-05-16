@@ -16,4 +16,4 @@
 - name: Ensure that Go is present on the global system path
   ansible.windows.win_path:
     elements:
-    - 'C:\Program Files\Go\bin'
+    - '{{ go_install_path }}\Go\bin'

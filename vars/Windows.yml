@@ -2,3 +2,4 @@
 go_platform: windows
 go_arch: amd64
 go_ext: msi
+go_install_path: 'C:\Program Files'

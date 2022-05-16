@@ -93,7 +93,6 @@ jobs:
 
       - name: Install test dependencies.
         run: |
-          pip3 install --upgrade pip
           pip3 install –-upgrade wheel
           pip3 install ansible molecule
 

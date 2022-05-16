@@ -2,7 +2,7 @@
 
 [![CI](https://github.com/mdelapenya/ansible-role-go/workflows/CI/badge.svg?event=push)](https://github.com/mdelapenya/ansible-role-go/actions?query=workflow%3ACI)
 
-An Ansible Role that installs Go (the language) on Linux.
+An Ansible Role that installs Go (the language) on Linux, Windows and Mac.
 
 ## Requirements
 
@@ -22,6 +22,10 @@ Version, platform, architecture and file extension to use when downloading Go.
     go_tarball: go{{ go_version }}.{{ go_platform }}-{{ go_arch }}.{{ go_ext }}
     go_download_url: https://dl.google.com/go/{{ go_tarball }}
 
+On Windows machines, you can also set the following variables:
+
+    go_install_path: "C:\Program Files"
+
 ## Dependencies
 
 None.
@@ -38,4 +42,4 @@ MIT / BSD
 
 ## Author Information
 
-This role was created in 2022 as inspiration of [Jeff Geerling's](https://github.com/geerlingguy/ansible-role-go).
+This role was created in 2022 as inspiration of [Jeff Geerling's](https://github.com/geerlingguy/ansible-role-go), adding support for Mac and Windows.

@@ -93,12 +93,12 @@ jobs:
 
       # see https://github.com/ansible/ansible/issues/43759
       - name: Install test dependencies for Windows
-        run: pip3 install -Iv ansible===2.5.6 molecule
-        if: contains(${{ matrix.distro }}, 'windows')
+        run: pip3 install -Iv ansible==2.5.6 molecule
+        if: ${{ matrix.distro  != 'macos-latest' }}
 
       - name: Install test dependencies on MacOS
         run: pip3 install -Iv ansible molecule
-        if: ${{ matrix.distro }} == 'macos-latest'
+        if: ${{ matrix.distro  == 'macos-latest' }}
 
       - name: Run Molecule tests.
         run: molecule test -s localhost

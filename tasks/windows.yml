@@ -16,5 +16,5 @@
 - name: Ensure that Go is present on the global system path
   ansible.windows.win_path:
     elements:
-    - '{{ go_install_path }}\Go\bin'
+      - '{{ go_install_path }}\Go\bin'
   when: go_version_result is failed

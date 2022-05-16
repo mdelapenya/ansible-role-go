@@ -92,7 +92,7 @@ jobs:
           python-version: '3.x'
 
       # see https://github.com/ansible/ansible/issues/43759
-      - name:  Install test dependencies for Windows
+      - name: Install test dependencies for Windows
         run: pip3 install -Iv ansible===2.5.6 molecule
         if: contains(${{ matrix.distro }}, 'windows')
 

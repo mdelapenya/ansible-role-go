@@ -5,8 +5,8 @@
     params:
       files:
         - '{{ ansible_distribution }}.yml'
-        - '{{ ansible_os_family }}_{{ ansible_architecture }}.yml'
-        - '{{ ansible_os_family }}.yml'
+        - '{{ ansible_system }}_{{ ansible_architecture }}.yml'
+        - '{{ ansible_system }}.yml'
         - default.yml
       paths:
         - 'vars'
